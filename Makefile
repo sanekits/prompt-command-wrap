@@ -18,6 +18,9 @@ help:
 	pr --omit-pagination --width=100 --columns=3
 
 
-.PHONY: target
-target:
-	@# TODO: explain target
+tmp/prompt-command-wrap.bashrc: prompt-command-wrap.bashrc.template version
+	@command sed -e 's/<PcwrapVer>/$(Version)/g' $< > $@
+
+
+build: tmp/prompt-command-wrap.bashrc
+

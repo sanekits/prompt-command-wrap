@@ -2,17 +2,21 @@
 # vim: filetype=sh :
 
 __do_define_pcwrap=false
-type -t __pcwrap__ver >/dev/null && {
-    [[ $(__pcwrap__ver) -lt <PcwrapVer> ]] && {
+type -t __pcwrap_ver >/dev/null && {
+    [[ $(__pcwrap_ver) -lt <PcwrapVer> ]] && {
         __do_define_pcwrap=true
     }
 } || {
-    # __pcwrap__ver doesn't exist
+    # __pcwrap_ver doesn't exist
     __do_define_pcwrap=true
 }
 
-__do_define_pcwrap && {
-    __pcwrap__ver() {
+$__do_define_pcwrap && {
+    __pcwrap_ver() {
         builtin echo <PcwrapVer>
+    }
+    [[ -z ${__pcwrap_items + 1} ]] && {
+        # __pcwrap_items does not exist at all
+
     }
 }
