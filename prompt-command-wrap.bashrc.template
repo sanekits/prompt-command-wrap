@@ -1,0 +1,18 @@
+# prompt-command-wrap.bashrc
+# vim: filetype=sh :
+
+__do_define_pcwrap=false
+type -t __pcwrap__ver >/dev/null && {
+    [[ $(__pcwrap__ver) -lt <PcwrapVer> ]] && {
+        __do_define_pcwrap=true
+    }
+} || {
+    # __pcwrap__ver doesn't exist
+    __do_define_pcwrap=true
+}
+
+__do_define_pcwrap && {
+    __pcwrap__ver() {
+        builtin echo <PcwrapVer>
+    }
+}
