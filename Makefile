@@ -21,6 +21,7 @@ help:
 tmp/prompt-command-wrap.bashrc: prompt-command-wrap.bashrc.template version
 	@command sed -e 's/<PcwrapVer>/$(Version)/g' $< > $@
 
+.PHONY: build
 
 build: tmp/prompt-command-wrap.bashrc
 
