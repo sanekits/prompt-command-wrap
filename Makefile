@@ -23,9 +23,5 @@ tmp/prompt-command-wrap.bashrc: prompt-command-wrap.bashrc.template version
 
 .PHONY: build
 
-$(HOME)/bin/prompt-command-wrap.bashrc: tmp/prompt-command-wrap.bashrc
-	@cp tmp/prompt-command-wrap.bashrc ~/bin/
-	@echo "WARNING: temporary ~/bin/prompt-command-wrap.bashrc.  This step should be removed when shellkits that set PROMPT_COMMAND are converted to __pcwrap_run()" >&2
-
-build: tmp/prompt-command-wrap.bashrc ~/bin/prompt-command-wrap.bashrc
+build: tmp/prompt-command-wrap.bashrc
 

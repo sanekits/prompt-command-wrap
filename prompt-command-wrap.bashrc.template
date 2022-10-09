@@ -73,13 +73,15 @@ $__do_define_pcwrap && {
         echo "PROMPT_COMMAND=[$PROMPT_COMMAND]" >&2
     }
     __pcwrap_run() {
+        local origResultCode=$?  # We want inner commands to know the original command status
         local item
         for item in ${__pcwrap_items[@]}; do
             [[ "$(type -t $item)" == function ]] && {
-                $item
+                [[ $origResultCode -eq 0 ]];
+                $item;
             }
-            true
         done
+        [[ $origResultCode -eq 0 ]];
     }
     __pcwrap_clear() {
         unset __pcwrap_items;
