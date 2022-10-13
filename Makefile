@@ -17,6 +17,10 @@ help:
 	sort | \
 	pr --omit-pagination --width=100 --columns=3
 
+.PHONY: pcw-deps
+pcw-deps:
+	@echo $(absdir)version $(absdir)prompt-command-wrap.bashrc.template
+
 
 tmp/prompt-command-wrap.bashrc: prompt-command-wrap.bashrc.template version
 	@command sed -e 's/<PcwrapVer>/$(Version)/g' $< > $@
